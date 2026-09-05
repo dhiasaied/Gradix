@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Gradix - Midnight Sapphire</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;family=Sora:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#131313",
+                        "on-primary-fixed": "#002022",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-container-high": "#2a2a2a",
+                        "error-container": "#93000a",
+                        "surface-container-low": "#1c1b1b",
+                        "inverse-on-surface": "#313030",
+                        "inverse-primary": "#006970",
+                        "surface-variant": "#353534",
+                        "on-tertiary-container": "#715d00",
+                        "on-secondary-fixed": "#0d1c2d",
+                        "tertiary-fixed": "#ffe179",
+                        "surface-container": "#201f1f",
+                        "secondary-fixed": "#d4e4fa",
+                        "tertiary": "#fff5de",
+                        "surface-bright": "#3a3939",
+                        "primary-fixed-dim": "#00dbe9",
+                        "secondary-container": "#39485a",
+                        "surface-tint": "#00dbe9",
+                        "primary-container": "#00f0ff",
+                        "primary-fixed": "#7df4ff",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-primary": "#00363a",
+                        "error": "#ffb4ab",
+                        "tertiary-container": "#fed639",
+                        "outline": "#849495",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#eac324",
+                        "outline-variant": "#3b494b",
+                        "on-error": "#690005",
+                        "surface-container-highest": "#353534",
+                        "on-primary-container": "#006970",
+                        "on-secondary": "#233143",
+                        "surface-dim": "#131313",
+                        "on-background": "#e5e2e1",
+                        "on-tertiary": "#3b2f00",
+                        "on-surface-variant": "#b9cacb",
+                        "on-secondary-fixed-variant": "#39485a",
+                        "on-surface": "#e5e2e1",
+                        "secondary": "#b9c8de",
+                        "inverse-surface": "#e5e2e1",
+                        "primary": "#dbfcff",
+                        "on-tertiary-fixed-variant": "#554500",
+                        "on-secondary-container": "#a7b6cc",
+                        "on-tertiary-fixed": "#231b00",
+                        "secondary-fixed-dim": "#b9c8de",
+                        "background": "#131313"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "margin-mobile": "16px",
+                        "stack-xl": "64px",
+                        "stack-xs": "4px",
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "gutter": "24px",
+                        "stack-lg": "32px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Sora"],
+                        "headline-md": ["Sora"],
+                        "body-base": ["Geist"],
+                        "label-caps": ["JetBrains Mono"],
+                        "body-sm": ["Geist"],
+                        "display-lg-mobile": ["Sora"],
+                        "code-snippet": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-base": ["16px", { "lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "500" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "letterSpacing": "0em", "fontWeight": "400" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "code-snippet": ["13px", { "lineHeight": "1.5", "letterSpacing": "0em", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+</script>
+<style>
+        .midnight-sapphire {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #4a00e0 75%, #312e81 100%);
+        }
+        .checkerboard {
+            background-color: #131313;
+            background-image: linear-gradient(45deg, #1c1b1b 25%, transparent 25%, transparent 75%, #1c1b1b 75%, #1c1b1b),
+                              linear-gradient(45deg, #1c1b1b 25%, transparent 25%, transparent 75%, #1c1b1b 75%, #1c1b1b);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+        }
+        .canvas-area:fullscreen,
+        .canvas-area:-webkit-full-screen {
+            background: #0e0e0e;
+        }
+</style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col font-body-base overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-4 md:px-margin-desktop h-20 bg-surface/90 backdrop-blur-md border-b border-white/10">
+<a data-logo class="flex items-center gap-stack-md no-underline text-inherit" href="index.html">
+<img alt="Gradix Logo" class="h-8 w-8 rounded-sm object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDQ015-dAgoWc7vLYMdolqPPJaemz46vbmThQmCj5xofaxTVexdiHRj-hI_vPpKASaxB3JKY6m6lrpPRC2UFYlh7L-Nteo0OA6vYALVNG5SWn33WT6iLr1Wu57qJEzqOgq7SNYjJAAMr3qSGDoi9CsW45IZQgrN7gVXRcJPvXW7FE7w-aFL3wyyeAMKtzt-qQHIEKGXPi4Cco64zPC8S2yZOh10o5f0PFs674fyIkS38DFIJviyHfiEA">
+<span class="font-display-lg text-headline-md font-bold tracking-tighter text-on-surface">Gradix</span>
+</a>
+<div class="hidden md:flex items-center gap-gutter">
+<a data-nav="explore" class="font-label-caps text-label-caps uppercase py-2" href="index.html">Explore</a>
+<a data-nav="collections" class="font-label-caps text-label-caps uppercase py-2" href="Collections.html">Collections</a>
+<a data-nav="create" class="font-label-caps text-label-caps uppercase py-2" href="Prompt.html">Create</a>
+</div>
+<div class="flex items-center gap-stack-md">
+<button type="button" data-action="search" class="icon-btn text-on-surface-variant" aria-label="Search colors" title="Search (Ctrl+K)">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button type="button" data-action="create" class="btn-primary hidden sm:inline-flex bg-primary-fixed text-on-primary-fixed font-label-caps text-label-caps uppercase px-4 md:px-6 py-2.5 rounded-DEFAULT font-bold hover:bg-primary-container">Create Gradient</button>
+<button type="button" data-action="menu" class="icon-btn md:hidden text-on-surface-variant" aria-label="Open menu" title="Menu">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+
+<main class="flex-grow pt-20 flex flex-col lg:flex-row min-h-[calc(100vh-5rem)]">
+<div id="canvas-area" class="canvas-area flex-grow relative checkerboard min-h-[50vh] lg:min-h-0 w-full flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 midnight-sapphire opacity-100 transition-all duration-700 ease-in-out" id="gradientPreview"></div>
+<div class="absolute bottom-6 right-6 md:bottom-margin-desktop md:right-margin-desktop flex gap-stack-sm z-10">
+<button type="button" id="btn-fullscreen" class="icon-btn w-12 h-12 rounded bg-surface-container-low/80 backdrop-blur-md border border-white/10 flex items-center justify-center text-on-surface shadow-lg" title="Toggle Fullscreen">
+<span class="material-symbols-outlined">fullscreen</span>
+</button>
+<button type="button" id="btn-shuffle" class="icon-btn w-12 h-12 rounded bg-surface-container-low/80 backdrop-blur-md border border-white/10 flex items-center justify-center text-on-surface shadow-lg" title="Randomize Seeds">
+<span class="material-symbols-outlined">shuffle</span>
+</button>
+</div>
+</div>
+
+<aside class="w-full lg:w-[400px] flex flex-col bg-surface border-l border-white/10 overflow-y-auto shrink-0 z-20 shadow-[-10px_0_30px_rgba(0,0,0,0.5)]">
+<div class="p-6 lg:p-stack-lg flex flex-col gap-stack-lg h-full">
+<div class="flex flex-col gap-stack-xs reveal">
+<div class="flex items-center gap-2 mb-2">
+<span class="w-2 h-2 rounded-full bg-primary-fixed animate-pulse shadow-[0_0_10px_rgba(125,244,255,0.5)]"></span>
+<span class="font-label-caps text-label-caps text-primary-fixed uppercase">Aura / Abstract</span>
+</div>
+<h1 class="font-headline-md text-headline-md text-on-surface tracking-tight">Midnight Sapphire</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">
+  A deep, enveloping blend of obsidian blues and rich indigos, reminiscent of starlight bleeding through a dark nebula.
+</p>
+</div>
+
+<div class="flex flex-col gap-stack-sm reveal reveal-delay-1">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-2 border-b border-white/10 pb-2">Color Stops</h3>
+<div class="stop-row flex items-center justify-between p-3 rounded bg-surface-container-low border border-white/5 cursor-pointer" data-copy-hex="#0f172a" role="button" tabindex="0">
+<div class="flex items-center gap-3">
+<div class="w-6 h-6 rounded-full border border-white/20 shadow-inner bg-[#0f172a]"></div>
+<span class="font-code-snippet text-code-snippet text-on-surface">#0f172a</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">0%</span>
+</div>
+<div class="stop-row flex items-center justify-between p-3 rounded bg-surface-container-low border border-white/5 cursor-pointer" data-copy-hex="#1e1b4b" role="button" tabindex="0">
+<div class="flex items-center gap-3">
+<div class="w-6 h-6 rounded-full border border-white/20 shadow-inner bg-[#1e1b4b]"></div>
+<span class="font-code-snippet text-code-snippet text-on-surface">#1e1b4b</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">50%</span>
+</div>
+<div class="stop-row flex items-center justify-between p-3 rounded bg-surface-container-low border border-white/5 cursor-pointer" data-copy-hex="#4a00e0" role="button" tabindex="0">
+<div class="flex items-center gap-3">
+<div class="w-6 h-6 rounded-full border border-white/20 shadow-inner bg-[#4a00e0]"></div>
+<span class="font-code-snippet text-code-snippet text-on-surface">#4a00e0</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">75%</span>
+</div>
+<div class="stop-row flex items-center justify-between p-3 rounded bg-surface-container-low border border-white/5 cursor-pointer" data-copy-hex="#312e81" role="button" tabindex="0">
+<div class="flex items-center gap-3">
+<div class="w-6 h-6 rounded-full border border-white/20 shadow-inner bg-[#312e81]"></div>
+<span class="font-code-snippet text-code-snippet text-on-surface">#312e81</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">100%</span>
+</div>
+</div>
+
+<div class="flex flex-col gap-stack-sm mt-auto reveal reveal-delay-2">
+<div class="flex items-center justify-between border-b border-white/10 pb-2">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant">CSS Output</h3>
+<span class="font-label-caps text-label-caps text-primary-fixed-dim">CSS3</span>
+</div>
+<div class="relative group">
+<pre id="css-output" class="bg-surface-container-lowest p-4 rounded border border-white/10 overflow-x-auto font-code-snippet text-code-snippet text-on-surface-variant"><code class="language-css">.midnight-sapphire {
+  background: linear-gradient(
+    135deg,
+    #0f172a 0%,
+    #1e1b4b 50%,
+    #4a00e0 75%,
+    #312e81 100%
+  );
+}</code></pre>
+<button type="button" data-copy="#css-output" class="icon-btn absolute top-2 right-2 p-2 bg-surface-container-low rounded border border-white/10 opacity-100 md:opacity-0 md:group-hover:opacity-100 text-on-surface" title="Copy Code">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+</div>
+
+<div class="flex flex-col gap-3 pt-stack-md border-t border-white/10 reveal reveal-delay-3">
+<button type="button" data-action="create" class="btn-primary w-full py-3 bg-primary-fixed text-on-primary-fixed font-label-caps text-label-caps rounded font-bold hover:bg-primary-container shadow-[0_0_15px_rgba(125,244,255,0.15)] flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">tune</span> Customize
+</button>
+<div class="flex gap-3">
+<a href="Prompt.html" class="btn-ghost flex-1 py-3 bg-surface-container-low border border-white/10 text-on-surface font-label-caps text-label-caps rounded hover:bg-surface-container flex items-center justify-center gap-2 no-underline">
+<span class="material-symbols-outlined text-[16px]">integration_instructions</span> Prompt
+</a>
+<button type="button" id="btn-export" class="btn-ghost flex-1 py-3 bg-surface-container-low border border-white/10 text-on-surface font-label-caps text-label-caps rounded hover:bg-surface-container flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[16px]">download</span> Export
+</button>
+</div>
+</div>
+</div>
+</aside>
+</main>
+
+<section id="related-colors" class="bg-surface-container-lowest border-t border-white/10 py-stack-lg px-margin-mobile md:px-margin-desktop">
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-stack-md">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">palette</span> Explore 100+ colors
+</h3>
+<span id="related-count" class="color-count-badge">0 colors</span>
+</div>
+<div id="related-filters" class="filter-bar mb-stack-md"></div>
+<div id="related-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-gutter"></div>
+</section>
+
+<footer class="w-full py-stack-xl px-margin-mobile md:px-margin-desktop flex justify-between items-center bg-surface-container-lowest border-t border-white/5 flex-col md:flex-row gap-stack-md text-center md:text-left">
+<div>
+<span class="font-display-lg text-on-surface block text-[24px] mb-2 font-bold tracking-tight">Gradix</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">© 2026 Gradix Studio. Precision color for digital craft.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-stack-md font-label-caps text-label-caps uppercase">
+<a class="footer-link text-on-surface-variant" href="Documentation.html">Documentation</a>
+<a class="footer-link text-on-surface-variant" href="Privacy.html">Privacy</a>
+<a class="footer-link text-on-surface-variant" href="Changelog.html">Changelog</a>
+<a class="footer-link text-on-surface-variant" href="Community.html">Community</a>
+</div>
+</footer>
+
+<script src="shared.js"></script>
+<script>
+(function () {
+  const seeds = [
+    { angle: 135, stops: ["#0f172a 0%", "#1e1b4b 50%", "#4a00e0 75%", "#312e81 100%"] },
+    { angle: 160, stops: ["#020617 0%", "#1e1b4b 40%", "#312e81 70%", "#7df4ff 100%"] },
+    { angle: 200, stops: ["#0f172a 0%", "#4a00e0 45%", "#8e2de2 75%", "#1e1b4b 100%"] },
+    { angle: 120, stops: ["#000000 0%", "#1e1b4b 35%", "#312e81 65%", "#00dbe9 100%"] },
+    { angle: 145, stops: ["#0c0a1a 0%", "#312e81 50%", "#7950f2 80%", "#dbfcff 100%"] },
+  ];
+  let seedIndex = 0;
+  const preview = document.getElementById("gradientPreview");
+  const cssOut = document.querySelector("#css-output code");
+
+  function applySeed(i) {
+    const s = seeds[i];
+    const bg = `linear-gradient(${s.angle}deg, ${s.stops.join(", ")})`;
+    preview.style.background = bg;
+    preview.style.transition = "background 0.7s ease";
+    if (cssOut) {
+      cssOut.textContent = `.midnight-sapphire {\n  background: linear-gradient(\n    ${s.angle}deg,\n    ${s.stops.map((x) => x).join(",\n    ")}\n  );\n}`;
+    }
+  }
+
+  document.getElementById("btn-shuffle")?.addEventListener("click", () => {
+    seedIndex = (seedIndex + 1) % seeds.length;
+    applySeed(seedIndex);
+    Gradix.showToast("Gradient randomized");
+  });
+
+  document.getElementById("btn-fullscreen")?.addEventListener("click", async () => {
+    const area = document.getElementById("canvas-area");
+    try {
+      if (!document.fullscreenElement) {
+        await area.requestFullscreen();
+        Gradix.showToast("Fullscreen on");
+      } else {
+        await document.exitFullscreen();
+        Gradix.showToast("Fullscreen off");
+      }
+    } catch {
+      Gradix.showToast("Fullscreen not available");
+    }
+  });
+
+  document.getElementById("btn-export")?.addEventListener("click", async () => {
+    const text = document.getElementById("css-output")?.textContent || "";
+    const blob = new Blob([text], { type: "text/css" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "midnight-sapphire.css";
+    a.click();
+    URL.revokeObjectURL(url);
+    Gradix.showToast("CSS exported");
+  });
+
+  // Related palette (100+ colors)
+  const grid = document.getElementById("related-grid");
+  const filters = document.getElementById("related-filters");
+  const countEl = document.getElementById("related-count");
+  let cat = "all";
+
+  function renderRelated() {
+    const list =
+      cat === "all"
+        ? Gradix.colors
+        : Gradix.colors.filter((c) => c.category === cat);
+    if (countEl) countEl.textContent = `${list.length} colors`;
+    grid.innerHTML = list
+      .map(
+        (c) => `
+      <button type="button" class="related-card group flex flex-col gap-2 p-2 rounded bg-surface-container-low border border-white/5 text-left"
+        data-copy-hex="${c.hex}" aria-label="Copy ${c.name}">
+        <div class="swatch aspect-square rounded-sm mb-1" style="background-color:${c.hex}"></div>
+        <span class="font-label-caps text-[10px] text-primary-fixed uppercase tracking-widest">${c.name}</span>
+        <span class="font-code-snippet text-[11px] text-on-surface">${c.hex}</span>
+        <div class="flex flex-col gap-0.5 opacity-60 group-hover:opacity-100 transition-opacity">
+          <span class="font-code-snippet text-[9px] text-on-surface-variant">RGB(${c.rgb})</span>
+          <span class="font-code-snippet text-[9px] text-on-surface-variant">HSL(${c.hsl})</span>
+        </div>
+      </button>`
+      )
+      .join("");
+    grid.querySelectorAll("[data-copy-hex]").forEach((el) => {
+      el.addEventListener("click", () => Gradix.copyColor(el.getAttribute("data-copy-hex")));
+    });
+  }
+
+  if (filters) {
+    filters.innerHTML = Gradix.categories
+      .map(
+        (c) =>
+          `<button type="button" class="category-chip ${c.id === "all" ? "is-active" : ""}" data-cat="${c.id}">${c.label}</button>`
+      )
+      .join("");
+    filters.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-cat]");
+      if (!btn) return;
+      cat = btn.dataset.cat;
+      filters.querySelectorAll(".category-chip").forEach((c) =>
+        c.classList.toggle("is-active", c.dataset.cat === cat)
+      );
+      renderRelated();
+    });
+  }
+  renderRelated();
+})();
+</script>
+</body>
+</html>

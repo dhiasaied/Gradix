@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Gradix Customization Studio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&amp;family=Geist:wght@400&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface": "#131313",
+                      "on-primary-fixed": "#002022",
+                      "surface-container-lowest": "#0e0e0e",
+                      "surface-container-high": "#2a2a2a",
+                      "error-container": "#93000a",
+                      "surface-container-low": "#1c1b1b",
+                      "inverse-on-surface": "#313030",
+                      "inverse-primary": "#006970",
+                      "surface-variant": "#353534",
+                      "on-tertiary-container": "#715d00",
+                      "on-secondary-fixed": "#0d1c2d",
+                      "tertiary-fixed": "#ffe179",
+                      "surface-container": "#201f1f",
+                      "secondary-fixed": "#d4e4fa",
+                      "tertiary": "#fff5de",
+                      "surface-bright": "#3a3939",
+                      "primary-fixed-dim": "#00dbe9",
+                      "secondary-container": "#39485a",
+                      "surface-tint": "#00dbe9",
+                      "primary-container": "#00f0ff",
+                      "primary-fixed": "#7df4ff",
+                      "on-primary-fixed-variant": "#004f54",
+                      "on-primary": "#00363a",
+                      "error": "#ffb4ab",
+                      "tertiary-container": "#fed639",
+                      "outline": "#849495",
+                      "on-error-container": "#ffdad6",
+                      "tertiary-fixed-dim": "#eac324",
+                      "outline-variant": "#3b494b",
+                      "on-error": "#690005",
+                      "surface-container-highest": "#353534",
+                      "on-primary-container": "#006970",
+                      "on-secondary": "#233143",
+                      "surface-dim": "#131313",
+                      "on-background": "#e5e2e1",
+                      "on-tertiary": "#3b2f00",
+                      "on-surface-variant": "#b9cacb",
+                      "on-secondary-fixed-variant": "#39485a",
+                      "on-surface": "#e5e2e1",
+                      "secondary": "#b9c8de",
+                      "inverse-surface": "#e5e2e1",
+                      "primary": "#dbfcff",
+                      "on-tertiary-fixed-variant": "#554500",
+                      "on-secondary-container": "#a7b6cc",
+                      "on-tertiary-fixed": "#231b00",
+                      "secondary-fixed-dim": "#b9c8de",
+                      "background": "#131313"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-desktop": "64px",
+                      "margin-mobile": "16px",
+                      "stack-xl": "64px",
+                      "stack-xs": "4px",
+                      "stack-sm": "8px",
+                      "stack-md": "16px",
+                      "gutter": "24px",
+                      "stack-lg": "32px",
+                      "unit": "4px"
+              },
+              "fontFamily": {
+                      "display-lg": ["Sora"],
+                      "headline-md": ["Sora"],
+                      "body-base": ["Geist"],
+                      "label-caps": ["JetBrains Mono"],
+                      "body-sm": ["Geist"],
+                      "display-lg-mobile": ["Sora"],
+                      "code-snippet": ["JetBrains Mono"]
+              },
+              "fontSize": {
+                      "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                      "headline-md": ["24px", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                      "body-base": ["16px", { "lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400" }],
+                      "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "500" }],
+                      "body-sm": ["14px", { "lineHeight": "1.5", "letterSpacing": "0em", "fontWeight": "400" }],
+                      "display-lg-mobile": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                      "code-snippet": ["13px", { "lineHeight": "1.5", "letterSpacing": "0em", "fontWeight": "400" }]
+              }
+      },
+          },
+        }
+</script>
+</head>
+<body class="bg-background text-on-surface font-body-base min-h-screen flex flex-col">
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-4 md:px-margin-desktop h-20 bg-surface/90 backdrop-blur-md border-b border-white/10">
+<a data-logo class="flex items-center gap-stack-md no-underline text-inherit" href="index.html">
+<img alt="Gradix Logo" class="h-8 w-8 rounded-sm object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDQ015-dAgoWc7vLYMdolqPPJaemz46vbmThQmCj5xofaxTVexdiHRj-hI_vPpKASaxB3JKY6m6lrpPRC2UFYlh7L-Nteo0OA6vYALVNG5SWn33WT6iLr1Wu57qJEzqOgq7SNYjJAAMr3qSGDoi9CsW45IZQgrN7gVXRcJPvXW7FE7w-aFL3wyyeAMKtzt-qQHIEKGXPi4Cco64zPC8S2yZOh10o5f0PFs674fyIkS38DFIJviyHfiEA">
+<span class="font-display-lg text-headline-md font-bold tracking-tighter text-on-surface">Gradix</span>
+</a>
+<div class="hidden md:flex items-center gap-gutter">
+<a data-nav="explore" class="font-label-caps text-label-caps uppercase py-2" href="index.html">Explore</a>
+<a data-nav="collections" class="font-label-caps text-label-caps uppercase py-2" href="Collections.html">Collections</a>
+<a data-nav="create" class="font-label-caps text-label-caps uppercase py-2" href="Prompt.html">Create</a>
+</div>
+<div class="flex items-center gap-stack-md">
+<button type="button" data-action="search" class="icon-btn text-on-surface-variant" aria-label="Search colors" title="Search (Ctrl+K)">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button type="button" data-action="create" class="btn-primary hidden sm:inline-flex bg-primary-fixed text-on-primary-fixed font-label-caps text-label-caps uppercase px-4 md:px-6 py-2.5 rounded-DEFAULT font-bold hover:bg-primary-container">Create Gradient</button>
+<button type="button" data-action="menu" class="icon-btn md:hidden text-on-surface-variant" aria-label="Open menu" title="Menu">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+
+<main class="flex-1 flex flex-col lg:flex-row mt-20 min-h-[calc(100vh-80px)] overflow-hidden">
+<div class="flex-1 flex flex-col relative bg-[#1c1c1c] overflow-hidden min-h-[50vh]" style="background-image: linear-gradient(45deg, #181818 25%, transparent 25%, transparent 75%, #181818 75%, #181818), linear-gradient(45deg, #181818 25%, transparent 25%, transparent 75%, #181818 75%, #181818); background-size: 20px 20px; background-position: 0 0, 10px 10px;">
+<div class="absolute top-stack-md right-stack-md z-10 flex gap-stack-sm">
+<button type="button" id="zoom-in" class="icon-btn bg-surface-container-low/90 backdrop-blur border border-white/10 p-2 rounded text-on-surface-variant" title="Zoom in">
+<span class="material-symbols-outlined">zoom_in</span>
+</button>
+<button type="button" id="zoom-out" class="icon-btn bg-surface-container-low/90 backdrop-blur border border-white/10 p-2 rounded text-on-surface-variant" title="Zoom out">
+<span class="material-symbols-outlined">zoom_out</span>
+</button>
+<button type="button" id="zoom-reset" class="icon-btn bg-surface-container-low/90 backdrop-blur border border-white/10 p-2 rounded text-on-surface-variant" title="Reset view">
+<span class="material-symbols-outlined">aspect_ratio</span>
+</button>
+</div>
+<div class="flex-1 flex items-center justify-center p-6 md:p-margin-desktop">
+<div id="preview-surface" class="preview-surface w-full h-full min-h-[280px] max-w-4xl max-h-[800px] rounded-xl shadow-[0_0_40px_rgba(0,0,0,0.5)] border border-white/5 relative overflow-hidden">
+<div id="noise-overlay" class="absolute inset-0 opacity-[0.05] mix-blend-overlay pointer-events-none" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');"></div>
+</div>
+</div>
+<div class="h-56 md:h-64 border-t border-white/10 bg-surface-container-lowest flex flex-col shrink-0">
+<div class="flex items-center justify-between px-stack-md py-stack-sm border-b border-white/5">
+<div class="flex gap-stack-md" id="output-tabs" role="tablist">
+<button type="button" class="tab-btn is-active font-label-caps text-label-caps uppercase pb-1" data-tab="css">CSS</button>
+<button type="button" class="tab-btn text-on-surface-variant font-label-caps text-label-caps uppercase pb-1" data-tab="tailwind">Tailwind</button>
+<button type="button" class="tab-btn text-on-surface-variant font-label-caps text-label-caps uppercase pb-1" data-tab="prompt">Prompt</button>
+</div>
+<button type="button" data-copy="#code-panel" class="icon-btn text-on-surface-variant p-1 rounded" title="Copy Code">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</button>
+</div>
+<div class="flex-1 p-stack-md overflow-y-auto bg-[#0a0a0a]">
+<pre id="code-panel" class="font-code-snippet text-code-snippet text-on-surface-variant whitespace-pre-wrap"></pre>
+</div>
+</div>
+</div>
+
+<div class="w-full lg:w-96 bg-surface-container-low border-t lg:border-t-0 lg:border-l border-white/10 flex flex-col max-h-[70vh] lg:max-h-none lg:h-auto overflow-hidden shrink-0">
+<div class="p-stack-md border-b border-white/10 flex justify-between items-center bg-surface-container-lowest">
+<h2 class="font-headline-md text-headline-md text-on-surface">Properties</h2>
+<div class="studio-menu">
+<button type="button" id="menu-more" class="icon-btn text-on-surface-variant" title="More options" aria-label="More" aria-expanded="false" aria-haspopup="true">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+<div id="studio-menu-panel" class="studio-menu-panel" role="menu">
+<button type="button" data-studio-action="export" role="menuitem">
+<span class="material-symbols-outlined text-[16px]">download</span> Export CSS
+</button>
+<button type="button" data-studio-action="share" role="menuitem">
+<span class="material-symbols-outlined text-[16px]">share</span> Copy prompt
+</button>
+<button type="button" data-studio-action="reset" role="menuitem">
+<span class="material-symbols-outlined text-[16px]">restart_alt</span> Reset layers
+</button>
+</div>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto p-stack-md flex flex-col gap-stack-lg">
+<div class="bg-surface-container-highest p-stack-md rounded border border-white/5">
+<div class="flex justify-between items-center mb-stack-sm">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">auto_awesome</span> Artistic Prompt
+</span>
+<button type="button" id="refresh-prompt" class="icon-btn text-on-surface-variant" title="Generate New">
+<span class="material-symbols-outlined text-[16px]">refresh</span>
+</button>
+</div>
+<p id="prompt-text" class="font-body-sm text-body-sm text-on-surface italic leading-relaxed">
+  "Deep cobalt bleeding into violet ink with soft atmospheric diffusion, layered radial light, subtle grain and cinematic depth."
+</p>
+</div>
+
+<div class="flex flex-col gap-stack-sm">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase border-b border-white/5 pb-2">Global Effects</h3>
+<div class="flex items-center justify-between py-2">
+<span class="font-body-sm text-body-sm text-on-surface">Noise</span>
+<div class="flex items-center gap-2 w-1/2">
+<input id="noise-range" class="w-full accent-primary-fixed h-1 bg-surface-container-highest rounded appearance-none outline-none" max="100" min="0" type="range" value="5">
+<span id="noise-val" class="font-code-snippet text-code-snippet text-on-surface-variant w-8 text-right">5%</span>
+</div>
+</div>
+<div class="flex items-center justify-between py-2">
+<span class="font-body-sm text-body-sm text-on-surface">Grain</span>
+<div class="flex items-center gap-2 w-1/2">
+<input id="grain-range" class="w-full accent-primary-fixed h-1 bg-surface-container-highest rounded appearance-none outline-none" max="100" min="0" type="range" value="15">
+<span id="grain-val" class="font-code-snippet text-code-snippet text-on-surface-variant w-8 text-right">15%</span>
+</div>
+</div>
+</div>
+
+<div id="layers-panel" class="flex flex-col gap-stack-sm flex-1">
+<div class="flex justify-between items-center border-b border-white/5 pb-2">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase">Layers</h3>
+<button type="button" id="add-layer" class="text-primary-fixed hover:text-primary-fixed-dim transition-colors flex items-center gap-1 font-label-caps text-label-caps">
+<span class="material-symbols-outlined text-[16px]">add</span> Add Layer
+</button>
+</div>
+<div id="layers-list"></div>
+</div>
+
+<details class="border border-white/10 rounded bg-surface-container-lowest">
+<summary class="cursor-pointer p-3 font-label-caps text-label-caps text-on-surface-variant uppercase flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">palette</span> Color library (100+)
+</summary>
+<div class="p-3 max-h-64 overflow-y-auto">
+<div id="studio-swatches" class="grid grid-cols-6 gap-2"></div>
+</div>
+</details>
+</div>
+</div>
+</main>
+
+<footer class="w-full py-stack-xl px-margin-mobile md:px-margin-desktop flex justify-between items-center bg-surface-container-lowest border-t border-white/5 flex-col md:flex-row gap-stack-md text-center md:text-left">
+<div>
+<span class="font-display-lg text-on-surface block text-[24px] mb-2 font-bold tracking-tight">Gradix</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">© 2026 Gradix Studio. Precision color for digital craft.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-stack-md font-label-caps text-label-caps uppercase">
+<a class="footer-link text-on-surface-variant" href="Documentation.html">Documentation</a>
+<a class="footer-link text-on-surface-variant" href="Privacy.html">Privacy</a>
+<a class="footer-link text-on-surface-variant" href="Changelog.html">Changelog</a>
+<a class="footer-link text-on-surface-variant" href="Community.html">Community</a>
+</div>
+</footer>
+
+<script src="shared.js"></script>
+<script>
+(function () {
+  const prompts = [
+    '"Deep cobalt bleeding into violet ink with soft atmospheric diffusion, layered radial light, subtle grain and cinematic depth."',
+    '"Midnight ocean meeting electric cyan — soft bloom, film grain, and slow radial falloff."',
+    '"Ember gold dissolving into obsidian — warm highlights, cool shadows, velvet contrast."',
+    '"Nebula violet with glacial ice accents — multi-stop radial glow and whisper-thin noise."',
+  ];
+
+  const state = {
+    zoom: 1,
+    noise: 5,
+    grain: 15,
+    activeLayer: 0,
+    tab: "css",
+    layers: [
+      {
+        name: "Layer 1 (Radial)",
+        type: "radial",
+        blend: "normal",
+        visible: true,
+        x: 30,
+        y: 30,
+        opacity: 100,
+        stops: [
+          { color: "#4a00e0", pos: 0 },
+          { color: "#8e2de2", pos: 40 },
+          { color: "#6a11cb", pos: 70 },
+          { color: "#000000", pos: 100 },
+        ],
+      },
+      {
+        name: "Layer 2 (Linear)",
+        type: "linear",
+        blend: "multiply",
+        visible: true,
+        x: 50,
+        y: 50,
+        opacity: 40,
+        stops: [
+          { color: "#000000", pos: 0 },
+          { color: "#1e1b4b", pos: 100 },
+        ],
+      },
+      {
+        name: "Layer 3 (Cyan Highlight)",
+        type: "radial",
+        blend: "screen",
+        visible: true,
+        x: 80,
+        y: 20,
+        opacity: 20,
+        stops: [
+          { color: "#00f0ff", pos: 0 },
+          { color: "#00f0ff00", pos: 50 },
+        ],
+      },
+    ],
+  };
+
+  const preview = document.getElementById("preview-surface");
+  const noiseEl = document.getElementById("noise-overlay");
+  const codePanel = document.getElementById("code-panel");
+  const layersList = document.getElementById("layers-list");
+
+  function layerCss(layer) {
+    const stops = layer.stops.map((s) => `${s.color} ${s.pos}%`).join(", ");
+    if (layer.type === "linear") {
+      return `linear-gradient(135deg, ${stops})`;
+    }
+    if (layer.type === "conic") {
+      return `conic-gradient(from 0deg at ${layer.x}% ${layer.y}%, ${stops})`;
+    }
+    return `radial-gradient(circle at ${layer.x}% ${layer.y}%, ${stops})`;
+  }
+
+  function updatePreview() {
+    const visible = state.layers.filter((l) => l.visible);
+    const backgrounds = visible.map(layerCss).reverse();
+    preview.style.backgroundImage = backgrounds.join(", ");
+    preview.style.opacity = "1";
+    preview.style.transform = `scale(${state.zoom})`;
+    noiseEl.style.opacity = String(state.noise / 100);
+    updateCode();
+  }
+
+  function updateCode() {
+    const css = state.layers
+      .map((l, i) => {
+        if (!l.visible) return `/* ${l.name} hidden */`;
+        return `.gradix-layer-${i + 1} {\n  background: ${layerCss(l)};\n  mix-blend-mode: ${l.blend};\n  opacity: ${l.opacity / 100};\n}`;
+      })
+      .join("\n\n");
+
+    const tw = `bg-[${layerCss(state.layers[0]).replace(/\s+/g, "_")}]`;
+    const prompt = document.getElementById("prompt-text").textContent.trim();
+
+    if (state.tab === "css") codePanel.textContent = css;
+    else if (state.tab === "tailwind") codePanel.textContent = `<!-- Approximate Tailwind arbitrary value -->\n<div class="${tw}"></div>`;
+    else codePanel.textContent = prompt;
+  }
+
+  function renderLayers() {
+    layersList.innerHTML = state.layers
+      .map((layer, i) => {
+        const active = i === state.activeLayer;
+        return `
+        <div class="layer-item ${active ? "is-active bg-surface-container border border-primary-fixed/30" : "bg-surface-container-low border border-white/5"} rounded overflow-hidden mb-2" data-layer="${i}">
+          <div class="p-stack-sm flex items-center gap-3 ${active ? "bg-surface-container-highest border-b border-white/5" : ""} cursor-pointer layer-header">
+            <span class="material-symbols-outlined text-on-surface-variant text-[18px]">drag_indicator</span>
+            <div class="w-6 h-6 rounded-full shrink-0 border border-white/20" style="background:${layerCss(layer)}"></div>
+            <span class="font-body-sm text-body-sm ${active ? "text-on-surface" : "text-on-surface-variant"} flex-1 truncate">${layer.name}</span>
+            <button type="button" class="icon-btn text-on-surface-variant" data-toggle-vis="${i}" title="Toggle visibility">
+              <span class="material-symbols-outlined text-[18px]">${layer.visible ? "visibility" : "visibility_off"}</span>
+            </button>
+            <button type="button" class="icon-btn text-on-surface-variant hover:text-error" data-delete-layer="${i}" title="Delete layer">
+              <span class="material-symbols-outlined text-[18px]">delete</span>
+            </button>
+          </div>
+          ${
+            active
+              ? `<div class="p-stack-md flex flex-col gap-stack-md bg-surface-container-low">
+            <div class="grid grid-cols-2 gap-stack-sm">
+              <div class="flex flex-col gap-1">
+                <label class="font-label-caps text-[10px] text-on-surface-variant uppercase">Type</label>
+                <select data-prop="type" class="bg-surface-container-lowest border border-white/10 rounded px-2 py-1 font-body-sm text-on-surface">
+                  <option value="radial" ${layer.type === "radial" ? "selected" : ""}>Radial</option>
+                  <option value="linear" ${layer.type === "linear" ? "selected" : ""}>Linear</option>
+                  <option value="conic" ${layer.type === "conic" ? "selected" : ""}>Conic</option>
+                </select>
+              </div>
+              <div class="flex flex-col gap-1">
+                <label class="font-label-caps text-[10px] text-on-surface-variant uppercase">Blend Mode</label>
+                <select data-prop="blend" class="bg-surface-container-lowest border border-white/10 rounded px-2 py-1 font-body-sm text-on-surface">
+                  ${["normal", "multiply", "screen", "overlay"].map((b) => `<option value="${b}" ${layer.blend === b ? "selected" : ""}>${b[0].toUpperCase() + b.slice(1)}</option>`).join("")}
+                </select>
+              </div>
+            </div>
+            <div class="flex flex-col gap-2" data-stops>
+              <label class="font-label-caps text-[10px] text-on-surface-variant uppercase flex justify-between">Color Stops
+                <button type="button" class="icon-btn" data-add-stop title="Add stop"><span class="material-symbols-outlined text-[12px]">add</span></button>
+              </label>
+              ${layer.stops
+                .map(
+                  (s, si) => `
+                <div class="flex items-center gap-2 group" data-stop="${si}">
+                  <input type="color" value="${s.color.length === 9 ? s.color.slice(0, 7) : s.color}" data-stop-color class="w-6 h-6 rounded cursor-pointer bg-transparent border-0 p-0">
+                  <input type="text" value="${s.color}" data-stop-hex class="bg-surface-container-lowest border border-white/10 rounded px-2 py-1 font-code-snippet text-code-snippet text-on-surface w-24 uppercase">
+                  <input type="range" min="0" max="100" value="${s.pos}" data-stop-pos class="flex-1 accent-primary-fixed h-1 bg-surface-container-highest rounded appearance-none">
+                  <span class="font-code-snippet text-code-snippet text-on-surface-variant w-8 text-right">${s.pos}%</span>
+                  <button type="button" class="icon-btn opacity-0 group-hover:opacity-100" data-remove-stop="${si}"><span class="material-symbols-outlined text-[14px]">close</span></button>
+                </div>`
+                )
+                .join("")}
+            </div>
+            <div class="grid grid-cols-2 gap-stack-md pt-2 border-t border-white/5">
+              <div class="flex flex-col gap-1">
+                <label class="font-label-caps text-[10px] text-on-surface-variant uppercase flex justify-between">Position X <span data-label-x>${layer.x}%</span></label>
+                <input type="range" min="0" max="100" value="${layer.x}" data-prop-range="x" class="w-full accent-primary-fixed h-1 bg-surface-container-highest rounded appearance-none mt-1">
+              </div>
+              <div class="flex flex-col gap-1">
+                <label class="font-label-caps text-[10px] text-on-surface-variant uppercase flex justify-between">Position Y <span data-label-y>${layer.y}%</span></label>
+                <input type="range" min="0" max="100" value="${layer.y}" data-prop-range="y" class="w-full accent-primary-fixed h-1 bg-surface-container-highest rounded appearance-none mt-1">
+              </div>
+              <div class="flex flex-col gap-1 col-span-2">
+                <label class="font-label-caps text-[10px] text-on-surface-variant uppercase flex justify-between">Opacity <span data-label-o>${layer.opacity}%</span></label>
+                <input type="range" min="0" max="100" value="${layer.opacity}" data-prop-range="opacity" class="w-full accent-primary-fixed h-1 bg-surface-container-highest rounded appearance-none mt-1">
+              </div>
+            </div>
+          </div>`
+              : ""
+          }
+        </div>`;
+      })
+      .join("");
+
+    layersList.querySelectorAll(".layer-header").forEach((el) => {
+      el.addEventListener("click", (e) => {
+        if (e.target.closest("button")) return;
+        state.activeLayer = Number(el.closest("[data-layer]").dataset.layer);
+        renderLayers();
+      });
+    });
+
+    layersList.querySelectorAll("[data-toggle-vis]").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const i = Number(btn.dataset.toggleVis);
+        state.layers[i].visible = !state.layers[i].visible;
+        renderLayers();
+        updatePreview();
+      });
+    });
+
+    layersList.querySelectorAll("[data-delete-layer]").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const i = Number(btn.dataset.deleteLayer);
+        if (state.layers.length <= 1) {
+          Gradix.showToast("Keep at least one layer");
+          return;
+        }
+        state.layers.splice(i, 1);
+        state.activeLayer = Math.min(state.activeLayer, state.layers.length - 1);
+        renderLayers();
+        updatePreview();
+        Gradix.showToast("Layer deleted");
+      });
+    });
+
+    const active = layersList.querySelector(`[data-layer="${state.activeLayer}"]`);
+    if (!active) return;
+
+    active.querySelectorAll("[data-prop]").forEach((sel) => {
+      sel.addEventListener("change", () => {
+        state.layers[state.activeLayer][sel.dataset.prop] = sel.value;
+        updatePreview();
+        renderLayers();
+      });
+    });
+
+    active.querySelectorAll("[data-prop-range]").forEach((input) => {
+      input.addEventListener("input", () => {
+        const key = input.dataset.propRange;
+        state.layers[state.activeLayer][key] = Number(input.value);
+        const map = { x: "data-label-x", y: "data-label-y", opacity: "data-label-o" };
+        const label = active.querySelector(`[${map[key]}]`);
+        if (label) label.textContent = input.value + "%";
+        updatePreview();
+      });
+    });
+
+    active.querySelector("[data-add-stop]")?.addEventListener("click", () => {
+      state.layers[state.activeLayer].stops.push({ color: "#7df4ff", pos: 100 });
+      renderLayers();
+      updatePreview();
+    });
+
+    active.querySelectorAll("[data-remove-stop]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const layer = state.layers[state.activeLayer];
+        if (layer.stops.length <= 2) {
+          Gradix.showToast("Need at least 2 stops");
+          return;
+        }
+        layer.stops.splice(Number(btn.dataset.removeStop), 1);
+        renderLayers();
+        updatePreview();
+      });
+    });
+
+    active.querySelectorAll("[data-stop]").forEach((row) => {
+      const si = Number(row.dataset.stop);
+      const color = row.querySelector("[data-stop-color]");
+      const hex = row.querySelector("[data-stop-hex]");
+      const pos = row.querySelector("[data-stop-pos]");
+      color.addEventListener("input", () => {
+        state.layers[state.activeLayer].stops[si].color = color.value;
+        hex.value = color.value;
+        updatePreview();
+      });
+      hex.addEventListener("change", () => {
+        let v = hex.value.trim();
+        if (!v.startsWith("#")) v = "#" + v;
+        state.layers[state.activeLayer].stops[si].color = v;
+        if (/^#[0-9a-fA-F]{6}$/.test(v)) color.value = v;
+        updatePreview();
+      });
+      pos.addEventListener("input", () => {
+        state.layers[state.activeLayer].stops[si].pos = Number(pos.value);
+        row.querySelector(".font-code-snippet:last-of-type") ||
+          (row.querySelectorAll(".font-code-snippet")[0]);
+        const pct = row.querySelector("span.font-code-snippet");
+        // update the % label (last span)
+        const spans = row.querySelectorAll("span.font-code-snippet, span");
+        spans.forEach((s) => {
+          if (s.textContent.includes("%")) s.textContent = pos.value + "%";
+        });
+        updatePreview();
+      });
+    });
+  }
+
+  // Zoom
+  document.getElementById("zoom-in").addEventListener("click", () => {
+    state.zoom = Math.min(1.5, state.zoom + 0.1);
+    updatePreview();
+  });
+  document.getElementById("zoom-out").addEventListener("click", () => {
+    state.zoom = Math.max(0.6, state.zoom - 0.1);
+    updatePreview();
+  });
+  document.getElementById("zoom-reset").addEventListener("click", () => {
+    state.zoom = 1;
+    updatePreview();
+    Gradix.showToast("View reset");
+  });
+
+  // Noise / grain
+  document.getElementById("noise-range").addEventListener("input", (e) => {
+    state.noise = Number(e.target.value);
+    document.getElementById("noise-val").textContent = state.noise + "%";
+    updatePreview();
+  });
+  document.getElementById("grain-range").addEventListener("input", (e) => {
+    state.grain = Number(e.target.value);
+    document.getElementById("grain-val").textContent = state.grain + "%";
+    // subtle contrast via filter
+    preview.style.filter = state.grain > 0 ? `contrast(${1 + state.grain / 200})` : "none";
+  });
+
+  document.getElementById("add-layer").addEventListener("click", () => {
+    const n = state.layers.length + 1;
+    state.layers.push({
+      name: `Layer ${n} (Radial)`,
+      type: "radial",
+      blend: "screen",
+      visible: true,
+      x: 50,
+      y: 50,
+      opacity: 60,
+      stops: [
+        { color: "#7df4ff", pos: 0 },
+        { color: "#7df4ff00", pos: 60 },
+      ],
+    });
+    state.activeLayer = state.layers.length - 1;
+    renderLayers();
+    updatePreview();
+    Gradix.showToast("Layer added");
+  });
+
+  document.getElementById("refresh-prompt").addEventListener("click", () => {
+    const next = prompts[Math.floor(Math.random() * prompts.length)];
+    document.getElementById("prompt-text").textContent = next;
+    if (state.tab === "prompt") updateCode();
+    Gradix.showToast("Prompt refreshed");
+  });
+
+  const defaultLayers = JSON.parse(JSON.stringify(state.layers));
+  const menuBtn = document.getElementById("menu-more");
+  const menuPanel = document.getElementById("studio-menu-panel");
+
+  function closeStudioMenu() {
+    menuPanel?.classList.remove("is-open");
+    menuBtn?.setAttribute("aria-expanded", "false");
+  }
+
+  menuBtn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const open = menuPanel.classList.toggle("is-open");
+    menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+
+  menuPanel?.addEventListener("click", async (e) => {
+    const action = e.target.closest("[data-studio-action]")?.dataset.studioAction;
+    if (!action) return;
+    closeStudioMenu();
+    if (action === "export") {
+      const text = codePanel.textContent || "";
+      const blob = new Blob([text], { type: "text/css" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "gradix-gradient.css";
+      a.click();
+      URL.revokeObjectURL(url);
+      Gradix.showToast("CSS exported");
+    } else if (action === "share") {
+      const prompt = document.getElementById("prompt-text").textContent.trim();
+      const ok = await Gradix.copyText(prompt);
+      Gradix.showToast(ok ? "Prompt copied" : "Copy failed");
+    } else if (action === "reset") {
+      state.layers = JSON.parse(JSON.stringify(defaultLayers));
+      state.activeLayer = 0;
+      state.noise = 5;
+      state.grain = 15;
+      state.zoom = 1;
+      document.getElementById("noise-range").value = 5;
+      document.getElementById("noise-val").textContent = "5%";
+      document.getElementById("grain-range").value = 15;
+      document.getElementById("grain-val").textContent = "15%";
+      preview.style.filter = "none";
+      renderLayers();
+      updatePreview();
+      Gradix.showToast("Layers reset");
+    }
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".studio-menu")) closeStudioMenu();
+  });
+
+  document.getElementById("output-tabs").addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-tab]");
+    if (!btn) return;
+    state.tab = btn.dataset.tab;
+    document.querySelectorAll("#output-tabs .tab-btn").forEach((t) => {
+      t.classList.toggle("is-active", t.dataset.tab === state.tab);
+      t.classList.toggle("text-on-surface-variant", t.dataset.tab !== state.tab);
+    });
+    updateCode();
+  });
+
+  // Color library swatches
+  const swatches = document.getElementById("studio-swatches");
+  if (swatches && window.Gradix) {
+    swatches.innerHTML = Gradix.colors
+      .map(
+        (c) =>
+          `<button type="button" class="aspect-square rounded border border-white/10 hover:scale-110 hover:border-primary-fixed transition-all" style="background:${c.hex}" title="${c.name} ${c.hex}" data-pick="${c.hex}"></button>`
+      )
+      .join("");
+    swatches.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-pick]");
+      if (!btn) return;
+      const hex = btn.dataset.pick;
+      const layer = state.layers[state.activeLayer];
+      if (layer && layer.stops[0]) {
+        layer.stops[0].color = hex;
+        renderLayers();
+        updatePreview();
+      }
+      Gradix.copyColor(hex, "Applied & copied");
+    });
+  }
+
+  renderLayers();
+  updatePreview();
+})();
+</script>
+</body>
+</html>

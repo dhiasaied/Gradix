@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Gradix - Documentation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Sora:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface": "#131313",
+                      "on-primary-fixed": "#002022",
+                      "surface-container-lowest": "#0e0e0e",
+                      "surface-container-high": "#2a2a2a",
+                      "surface-container-low": "#1c1b1b",
+                      "surface-container": "#201f1f",
+                      "surface-container-highest": "#353534",
+                      "primary-fixed": "#7df4ff",
+                      "primary-container": "#00f0ff",
+                      "primary-fixed-dim": "#00dbe9",
+                      "on-surface": "#e5e2e1",
+                      "on-surface-variant": "#b9cacb",
+                      "background": "#131313",
+                      "primary": "#dbfcff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-desktop": "64px",
+                      "margin-mobile": "16px",
+                      "stack-xl": "64px",
+                      "stack-xs": "4px",
+                      "stack-sm": "8px",
+                      "stack-md": "16px",
+                      "gutter": "24px",
+                      "stack-lg": "32px",
+                      "unit": "4px"
+              },
+              "fontFamily": {
+                      "display-lg": ["Sora"],
+                      "headline-md": ["Sora"],
+                      "body-base": ["Geist"],
+                      "label-caps": ["JetBrains Mono"],
+                      "body-sm": ["Geist"],
+                      "code-snippet": ["JetBrains Mono"]
+              },
+              "fontSize": {
+                      "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                      "headline-md": ["24px", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                      "body-base": ["16px", { "lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400" }],
+                      "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "500" }],
+                      "body-sm": ["14px", { "lineHeight": "1.5", "letterSpacing": "0em", "fontWeight": "400" }],
+                      "code-snippet": ["13px", { "lineHeight": "1.5", "letterSpacing": "0em", "fontWeight": "400" }]
+              }
+      },
+          },
+        }
+</script>
+</head>
+<body class="bg-background text-on-surface font-body-base antialiased min-h-screen flex flex-col">
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-4 md:px-margin-desktop h-20 bg-surface/90 backdrop-blur-md border-b border-white/10">
+<a data-logo class="flex items-center gap-stack-md no-underline text-inherit" href="index.html">
+<img alt="Gradix Logo" class="h-8 w-8 rounded-sm object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDQ015-dAgoWc7vLYMdolqPPJaemz46vbmThQmCj5xofaxTVexdiHRj-hI_vPpKASaxB3JKY6m6lrpPRC2UFYlh7L-Nteo0OA6vYALVNG5SWn33WT6iLr1Wu57qJEzqOgq7SNYjJAAMr3qSGDoi9CsW45IZQgrN7gVXRcJPvXW7FE7w-aFL3wyyeAMKtzt-qQHIEKGXPi4Cco64zPC8S2yZOh10o5f0PFs674fyIkS38DFIJviyHfiEA">
+<span class="font-display-lg text-headline-md font-bold tracking-tighter text-on-surface">Gradix</span>
+</a>
+<div class="hidden md:flex items-center gap-gutter">
+<a data-nav="explore" class="font-label-caps text-label-caps uppercase py-2" href="index.html">Explore</a>
+<a data-nav="collections" class="font-label-caps text-label-caps uppercase py-2" href="Collections.html">Collections</a>
+<a data-nav="create" class="font-label-caps text-label-caps uppercase py-2" href="Prompt.html">Create</a>
+</div>
+<div class="flex items-center gap-stack-md">
+<button type="button" data-action="search" class="icon-btn text-on-surface-variant" aria-label="Search colors" title="Search (Ctrl+K)">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button type="button" data-action="create" class="btn-primary hidden sm:inline-flex bg-primary-fixed text-on-primary-fixed font-label-caps text-label-caps uppercase px-4 md:px-6 py-2.5 rounded-DEFAULT font-bold hover:bg-primary-container">Create Gradient</button>
+<button type="button" data-action="menu" class="icon-btn md:hidden text-on-surface-variant" aria-label="Open menu" title="Menu">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+
+<main class="flex-1 pt-20">
+<article class="content-page reveal">
+<h1 class="font-display-lg text-headline-md md:text-display-lg text-on-surface">Documentation</h1>
+<p class="lead font-body-base">How to explore colors, inspect collections, and build layered gradients in Gradix.</p>
+
+<section class="content-block">
+<h2>Explore palette</h2>
+<p>Open <a href="index.html#palette">Explore</a> to browse 120 curated colors. Click any swatch to copy its HEX value. Filter by Neutrals, Reds, Oranges, Yellows, Greens, Blues, Purples, or Accents.</p>
+<p class="mt-2">Press <strong class="text-on-surface">Ctrl+K</strong> (or ⌘K) anywhere to search by name, hex, or category.</p>
+</section>
+
+<section class="content-block">
+<h2>Collections</h2>
+<p>Visit <a href="Collections.html">Midnight Sapphire</a> to preview a curated gradient, shuffle seeds, toggle fullscreen, copy color stops, and export CSS. Related colors at the bottom use the same copy-on-click behavior.</p>
+</section>
+
+<section class="content-block">
+<h2>Create studio</h2>
+<p>In <a href="Prompt.html">Create</a> you can stack radial, linear, and conic layers with blend modes, noise, and grain. Use the output tabs for CSS, Tailwind, or artistic prompts. The ⋮ menu exports CSS, copies the prompt, or resets layers.</p>
+<ul>
+<li>Add or delete layers from the Layers panel</li>
+<li>Pick library colors to apply to the active layer’s first stop</li>
+<li>Zoom the preview with the canvas controls</li>
+</ul>
+</section>
+
+<section class="content-block">
+<h2>CSS gradients reference</h2>
+<p>Gradix outputs standard CSS gradients. For the full language reference, see the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/gradient" target="_blank" rel="noopener noreferrer">MDN gradient documentation</a>.</p>
+</section>
+</article>
+</main>
+
+<footer class="w-full py-stack-xl px-margin-mobile md:px-margin-desktop flex justify-between items-center bg-surface-container-lowest border-t border-white/5 flex-col md:flex-row gap-stack-md text-center md:text-left">
+<div>
+<span class="font-display-lg text-on-surface block text-[24px] mb-2 font-bold tracking-tight">Gradix</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">© 2026 Gradix Studio. Precision color for digital craft.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-stack-md font-label-caps text-label-caps uppercase">
+<a class="footer-link text-on-surface-variant" href="Documentation.html">Documentation</a>
+<a class="footer-link text-on-surface-variant" href="Privacy.html">Privacy</a>
+<a class="footer-link text-on-surface-variant" href="Changelog.html">Changelog</a>
+<a class="footer-link text-on-surface-variant" href="Community.html">Community</a>
+</div>
+</footer>
+<script src="shared.js"></script>
+</body>
+</html>
