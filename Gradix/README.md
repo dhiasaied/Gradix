@@ -1,40 +1,4 @@
-# Gradix — Design & Product Documentation
-
-**Product:** Gradix — Precision Gradients  
-**Tagline:** Backgrounds that feel like light.  
-**Version:** 1.1.0  
-**Stack:** Static HTML · Tailwind CSS (CDN) · shared.css · shared.js · WebGL shaders  
-
----
-
-## Table of contents
-
-01. [Introduction](#01-introduction)  
-02. [Project Overview](#02-project-overview)  
-03. [Design System](#03-design-system)  
-04. [Branding](#04-branding)  
-05. [Typography](#05-typography)  
-06. [Colors](#06-colors)  
-07. [Spacing](#07-spacing)  
-08. [Components](#08-components)  
-09. [Props](#09-props)  
-10. [Variants](#10-variants)  
-11. [States](#11-states)  
-12. [Layouts](#12-layouts)  
-13. [Pages](#13-pages)  
-14. [Navigation](#14-navigation)  
-15. [User Interface](#15-user-interface)  
-16. [Responsive Design](#16-responsive-design)  
-17. [Accessibility](#17-accessibility)  
-18. [Animations](#18-animations)  
-19. [3D Elements](#19-3d-elements)  
-20. [Content](#20-content)  
-21. [Guidelines](#21-guidelines)  
-22. [FAQ](#22-faq)  
-23. [Changelog](#23-changelog)  
-24. [Conclusion](#24-conclusion)  
-
----
+# Gradix — Design & Product 
 
 ## 01. Introduction
 
